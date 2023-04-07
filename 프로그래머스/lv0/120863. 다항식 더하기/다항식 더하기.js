@@ -6,11 +6,9 @@ function solution(polynomial) {
   let num = 0;
   /* 2. forEach()로 각 요소를 순회 -> forEach() 메서드는 주어진 함수를 배열 요소 각각에 대해 실행 */  
   polynomial.forEach((e) => {
-      if (e.includes('x')) {
           const x = e.split('x');
-          if (x[0] === '') xNum++;  //2-1. (1)x인경우
-          if (x[0] !== '') xNum += Number(x[0]); //2-2. 3x인경우
-      }
+          if (e.includes('x') && x[0] === '') xNum++;  //2-1. (1)x인경우
+          if (e.includes('x') && x[0] !== '') xNum += Number(x[0]); //2-2. 3x인경우
       
       if (!e.includes('x')) num += Number(e); //2-3. 상수인 경우
   })
