@@ -6,10 +6,13 @@ let input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 let n = Number(input[0].split(' ')[0]);
 let k = Number(input[0].split(' ')[1]);
 
-let arr = [];
-for (let i = 1; i <= n; i++) {
-    arr.push(Number(input[i]));
-}
+// let arr = [];
+// for (let i = 1; i <= n; i++) {
+//     arr.push(Number(input[i]));
+// }
+
+input.shift();
+let arr = [...input];
 
 let total = 0;
 // 가치가 큰 동전부터 확인하기 위해 뒤에서부터(n-1) 확인한다.
