@@ -2,8 +2,8 @@
 const fs = require("fs");
 let input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
-const n = +input.shift();
-const arr = input[0].split(' ').map(Number).sort((a,b) => a-b);
+const n = input.shift();
+const arr = input[0].split(' ').map(Number).sort((a,b) => a - b);
 //const arr = [...input].map(Number).sort((a, b) => a - b); // 오름차순 정렬 수행
 //arr.sort((a, b) => a - b);
 
