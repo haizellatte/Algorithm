@@ -1,5 +1,5 @@
 const fs = require("fs");
-// 엔터로 구분되어 있는 값들을 split으로 처리하고, map을 사용해서 number 타입으로 변환
+// 엔터로 구분되어 있는 값들을 split으로 처리해 가져온다.
 const input = fs.readFileSync("/dev/stdin").toString().split("\n");
 
 // 첫째줄의 값은 총 좌표의 개수이다.
