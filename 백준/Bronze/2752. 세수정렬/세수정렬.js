@@ -8,8 +8,8 @@ arr.sort((a, b) => a - b);
 
 // 정답 리턴
 let answer = "";
-for (let i = 0 ; i < arr.length ; i++ ) {
-    answer += arr[i] + " "
+for (let el of arr) {
+    answer += el + " "
 }
 
 console.log(answer);
