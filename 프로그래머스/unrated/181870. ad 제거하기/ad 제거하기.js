@@ -1,5 +1,5 @@
 function solution(strArr) {
-let sorted = strArr.filter((el) => !el.includes("ad"));
+    let answer = strArr.filter((word) => word.indexOf("ad") === -1);
     
-    return sorted;
+    return answer;
 }
