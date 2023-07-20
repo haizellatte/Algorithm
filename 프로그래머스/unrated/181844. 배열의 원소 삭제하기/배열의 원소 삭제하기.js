@@ -1,5 +1,11 @@
-// arr의 각 원소는 delete_list에 포함되지 않아야 한다.
-
 function solution(arr, delete_list) {
-    return arr.filter(el => !delete_list.includes(el));
+
+  for (let i = 0; i < arr.length ; i++) {
+    for (let j = 0; j < delete_list.length ; j++) {
+      if (arr[i] === delete_list[j]) {
+        delete arr[i];
+      }
+    }
+  }
+  return arr.filter(el => el !== null);
 }
