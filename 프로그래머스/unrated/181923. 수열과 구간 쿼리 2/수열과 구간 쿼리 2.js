@@ -1,9 +1,13 @@
+
+
+function f(arr, query) {
+    const [s, e, k] = query;
+    const filtered = arr.filter((v, i) => s <= i && i <= e && v > k);
+    
+    return filtered.length ? Math.min(...filtered) : -1;
+}
+
+
 function solution(arr, queries) {
-    const answer = new Array();
-    queries.map((query) => {
-        const [s, e, k] = query;
-        const filtered = arr.filter((value, index) => s <= index && index <= e && k < value);
-        answer.push(filtered.length ? Math.min(...filtered) : -1);
-    });
-    return answer;
+    return queries.map((query) => f(arr, query));
 }
