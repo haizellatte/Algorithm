@@ -7,7 +7,7 @@ function solution(arr) {
     // 행 > 열     
     if (rows > columns) {
         // arr[i]에 대해
-        for (let i = 0 ; i < arr.length; i++) {
+        for (let i = 0 ; i < rows; i++) {
             // 행-열의 차이만큼 반복           
             for (let j = columns; j < rows; j++) {
                 arr[i].push(0);
