@@ -1,16 +1,18 @@
-function solution(a, b, c, d) {
-  const arr = [a, b, c, d].reduce(
-    (ac, v) => ({...ac, [v]: (ac[v] || 0) + 1}),
-    {}
-  );
+function doDice(arr) {
   const diceKeys = Object.keys(arr);
   const diceValues = Object.values(arr);
-  
-  if (diceKeys.length === 1) {
-    return 1111 * diceKeys;
+  const threeNumSame = diceValues.map((v, i) => v !== 2 ? diceKeys[i] : "").filter(v => v !== "");
+
+  switch (diceKeys.length) {
+    case 1: return 1111 * diceKeys;
+    case 2: return twoDice(diceKeys, diceValues);
+    case 3: return Number(threeNumSame[0]) * Number(threeNumSame[1]);
+    case 4: return Math.min(...diceKeys);
   }
-  if (diceKeys.length === 2) {
-    if (diceValues[0] === diceValues[1]) {
+}
+
+function twoDice(diceKeys, diceValues) {
+  if (diceValues[0] === diceValues[1]) {
       return (
         (Number(diceKeys[0]) + Number(diceKeys[1])) *
         Math.abs(Number(diceKeys[0]) - Number(diceKeys[1]))
@@ -22,19 +24,14 @@ function solution(a, b, c, d) {
         return Math.pow(10 * Number(diceKeys[1]) + Number(diceKeys[0]), 2);
       }
     }
-  }
-  if (diceKeys.length === 3) {
-    if (diceValues[0] === 2) {
-      return Number(diceKeys[1]) * Number(diceKeys[2]);
-    }
-    if (diceValues[1] === 2) {
-      return Number(diceKeys[0]) * Number(diceKeys[2]);
-    }
-    if (diceValues[2] === 2) {
-      return Number(diceKeys[0]) * Number(diceKeys[1]);
-    }
-  }
-    if (diceKeys.length === 4) {
-      return Math.min(...diceKeys);
-    }
+}
+
+
+function solution(a, b, c, d) {
+  const arr = [a, b, c, d].reduce(
+    (ac, v) => ({...ac, [v]: (ac[v] || 0) + 1}),
+    {}
+  );
+
+  return doDice(arr);
 }
