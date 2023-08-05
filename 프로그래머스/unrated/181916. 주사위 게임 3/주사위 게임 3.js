@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/181916
+
 function doDice(arr) {
   const diceKeys = Object.keys(arr);
   const diceValues = Object.values(arr);
@@ -12,20 +14,15 @@ function doDice(arr) {
 }
 
 function twoDice(diceKeys, diceValues) {
+  const a = Number(diceKeys[0]);
+  const b = Number(diceKeys[1]);
+
   if (diceValues[0] === diceValues[1]) {
-      return (
-        (Number(diceKeys[0]) + Number(diceKeys[1])) *
-        Math.abs(Number(diceKeys[0]) - Number(diceKeys[1]))
-      );
-    } else {
-      if (diceValues[0] > diceValues[1]) {
-        return Math.pow(10 * Number(diceKeys[0]) + Number(diceKeys[1]), 2);
-      } else {
-        return Math.pow(10 * Number(diceKeys[1]) + Number(diceKeys[0]), 2);
-      }
+    return (a + b) * Math.abs(a - b);
+  } else {
+    return (diceValues[0] > diceValues[1]) ?  Math.pow(10  * a + b, 2) : Math.pow(10 * b + a, 2);
     }
 }
-
 
 function solution(a, b, c, d) {
   const arr = [a, b, c, d].reduce(
