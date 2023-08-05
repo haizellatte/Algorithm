@@ -3,37 +3,38 @@ function solution(a, b, c, d) {
     (ac, v) => ({...ac, [v]: (ac[v] || 0) + 1}),
     {}
   );
-  const checkDice = Object.keys(arr);
-
-  if (checkDice.length === 1) {
-    return 1111 * checkDice;
+  const diceKeys = Object.keys(arr);
+  const diceValues = Object.values(arr);
+  
+  if (diceKeys.length === 1) {
+    return 1111 * diceKeys;
   }
-  if (checkDice.length === 2) {
-    if (Object.values(arr)[0] === Object.values(arr)[1]) {
+  if (diceKeys.length === 2) {
+    if (diceValues[0] === diceValues[1]) {
       return (
-        (Number(checkDice[0]) + Number(checkDice[1])) *
-        Math.abs(Number(checkDice[0]) - Number(checkDice[1]))
+        (Number(diceKeys[0]) + Number(diceKeys[1])) *
+        Math.abs(Number(diceKeys[0]) - Number(diceKeys[1]))
       );
     } else {
-      if (Object.values(arr)[0] > Object.values(arr)[1]) {
-        return Math.pow(10 * Number(checkDice[0]) + Number(checkDice[1]), 2);
+      if (diceValues[0] > diceValues[1]) {
+        return Math.pow(10 * Number(diceKeys[0]) + Number(diceKeys[1]), 2);
       } else {
-        return Math.pow(10 * Number(checkDice[1]) + Number(checkDice[0]), 2);
+        return Math.pow(10 * Number(diceKeys[1]) + Number(diceKeys[0]), 2);
       }
     }
   }
-  if (checkDice.length === 3) {
-    if (Object.values(arr)[0] === 2) {
-      return Number(checkDice[1]) * Number(checkDice[2]);
+  if (diceKeys.length === 3) {
+    if (diceValues[0] === 2) {
+      return Number(diceKeys[1]) * Number(diceKeys[2]);
     }
-    if (Object.values(arr)[1] === 2) {
-      return Number(checkDice[0]) * Number(checkDice[2]);
+    if (diceValues[1] === 2) {
+      return Number(diceKeys[0]) * Number(diceKeys[2]);
     }
-    if (Object.values(arr)[2] === 2) {
-      return Number(checkDice[0]) * Number(checkDice[1]);
+    if (diceValues[2] === 2) {
+      return Number(diceKeys[0]) * Number(diceKeys[1]);
     }
   }
-    if (checkDice.length === 4) {
-      return Math.min(...checkDice);
+    if (diceKeys.length === 4) {
+      return Math.min(...diceKeys);
     }
 }
