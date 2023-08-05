@@ -12,11 +12,15 @@ function spliceArr (result, a, b) {
 function solution(arr, query) {
     let result = [...arr];
     
-    for (let i = 0 ; i < query.length; i++) {
-        i % 2 === 0 ? 
-            spliceArr(result, query[i]+1, arr.length) 
-            : spliceArr(result, 0, query[i]);
-    }
+    result.splice(0, 1)
+    
+//     for (let i = 0 ; i < arr.length; i++) {
+//         if (i % 2 === 0) {
+//             spliceArr(result, query[i]+1)
+//         } else {
+//             spliceArr(result, query[i], result.length);
+//         }
+//     }
                 
     return result;
 
