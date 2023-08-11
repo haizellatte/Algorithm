@@ -6,6 +6,4 @@ function solution(price, money, count) {
     }
     
     return (money >= answer) ? 0 : answer - money;
-    
-    
 }
