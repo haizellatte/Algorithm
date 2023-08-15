@@ -1,6 +1,11 @@
+const compareWord = (a, b, n) => {
+  if (a[n] === b[n]) {
+    return a.localeCompare(b)
+  }
+  return a[n].localeCompare(b[n])
+}
+
 function solution(strings, n) {
-    return strings.map(word => [...word].sort((a,b) => a[n] - b[n]))
-
-// return a[n] < b[n] ? -1 : a[n] > b[n] ? 1 : 0;
-
-} 
+  strings.sort((a, b) => compareWord(a, b, n));
+  return strings;
+}
