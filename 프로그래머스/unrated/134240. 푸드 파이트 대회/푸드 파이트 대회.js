@@ -1,32 +1,16 @@
-/*
-* [조건]
-* 1. result의 가운데 수는 0이 되고, 가운데를 기준으로 왼쪽과 오른쪽은 대치이다.
-* 2. 두 선수가 먹는 양과 종류, 순서는 같아야 한다.
-* 3. 칼로리가 낮은 음식을 먼저 먹을  수 있게 배치한다.
-*/
-
 function isEven(n) {
     return n % 2 === 0;
 }
 
-function pushFood(e, i) {
-    let temp = ''
-    for (let k = 0; k < e; k++) {
-        temp += i;
-    }  
-    return temp;
-}
-
 function solution(food) {
     let result = "";
-    
-    food.map((n, i) => {
-        if (n > 1) {
-            let e =  isEven(n) ? n / 2 : (n / 2) - 0.5;
-            result += pushFood(e, i);
-        }
-    })
-    
+
+    //food[0]은 물의 개수로, 항상 1이기 때문에 1번째 인덱스부터 확인한다.
+    for (let i = 1; i < food.length; i++) {
+        let n = isEven(food[i]) ? food[i] / 2 : (food[i] / 2) - 0.5;
+        result += String(i).repeat(n);
+    }
+
     const reverseResult = [...result].reverse().join('');
     return result + '0' + reverseResult;
 }
