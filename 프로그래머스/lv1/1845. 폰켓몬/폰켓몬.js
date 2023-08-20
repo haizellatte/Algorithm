@@ -1,5 +1,6 @@
 function solution(nums) {
-    let arr = nums.filter((x, i) => nums.indexOf(x) === i).length;
+    const max = nums.length /2;
+    const arr = nums.filter((x, i) => nums.indexOf(x) === i).length;
     
-    return (nums.length /2 < arr) ? nums.length /2 : arr;
+    return max < arr ? max : arr;
 }
