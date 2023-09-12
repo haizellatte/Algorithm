@@ -1,6 +1,6 @@
 function solution(wallpaper) {
-  let x = [];
-  let y = [];
+  const x = [];
+  const y = [];
   for (let i = 0; i < wallpaper.length; i++) {
     for (let j = 0; j < wallpaper[i].length; j++) {
       if (wallpaper[i][j] === "#") {
