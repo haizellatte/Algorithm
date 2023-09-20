@@ -1,13 +1,13 @@
 function solution(s) {
-  let set = [];
+  let stack = [];
 
   for (let i = 0; i < s.length; i++) {
-    if (set[set.length - 1] === s[i]) {
-      set.pop();
+    if (stack[stack.length - 1] === s[i]) {
+      stack.pop();
     } else {
-      set.push(s[i])
+      stack.push(s[i])
     }
   }
 
-  return set.length === 0 ? 1 : 0;
+  return stack.length === 0 ? 1 : 0;
 }
