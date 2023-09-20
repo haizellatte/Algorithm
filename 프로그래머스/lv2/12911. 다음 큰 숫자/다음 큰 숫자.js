@@ -5,11 +5,9 @@ const CountOne = (n) => {
 function solution(n) {
   const countN = CountOne(n);
   let NextN = n + 1;
-  flag = true;
 
-  while (flag) {
+  while (true) {
     if (CountOne(NextN) === countN) {
-      flag = false;
       return NextN;
     } else {
       NextN++;
