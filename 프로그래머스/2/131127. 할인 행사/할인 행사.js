@@ -1,4 +1,5 @@
-function check(wantList, discount) {
+
+function checkAble(wantList, discount) {
   const discountList = discount.reduce((acc, cur) => {
     acc[cur] = (acc[cur] || 0) + 1;
     return acc;
@@ -6,15 +7,7 @@ function check(wantList, discount) {
 
   const wantKey = Object.keys(wantList);
 
-  return wantKey.map(key => {
-    // console.log(wantList[key], discountList[key])
-    if (wantList[key] <= discountList[key]) {
-      return true;
-    } else {
-      return false;
-    }
-  })
-
+  return wantKey.every((key) => wantList[key] <= discountList[key]);
 }
 
 function solution(want, number, discount) {
@@ -25,12 +18,9 @@ function solution(want, number, discount) {
     return acc;
   }, {});
 
-
   for (let i = 0; i < discount.length - 9; i++) {
     const discountDay = discount.slice(i, i + 10);
-    const able = check(wantList, discountDay).every(x => x);
-    // console.log(able);
-    if (able) days++;
+    if (checkAble(wantList, discountDay)) days++;
   }
 
   return days;
