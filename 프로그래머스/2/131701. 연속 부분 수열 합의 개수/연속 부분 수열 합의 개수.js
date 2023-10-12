@@ -1,19 +1,14 @@
 function solution(elements) {
-    let answer = []
-    // 배열 2배 확장 
-    const extendElements = [...elements,...elements]
+  const set = new Set();
+  const len = elements.length;
 
-    elements.forEach((element,idx)=>{
-        if(idx < elements.length ){
-            for(let i=0;i<elements.length;i++){
-                // 각각의 순회마다 i부터 idx만큼 잘라서 slice 배열을 반환한 값을 push
-                const slice = extendElements.slice(i,i+1+idx)
-                answer.push(slice.reduce((acc,val)=>acc+val,0))
-            }
-        }
-    })
-
-    // 중복 제거
-    const set = new Set(answer)
-    return [...set].length;
+  for (let i = 0; i < len; i++) {
+    let sum = 0;
+    for (let j = 0; j < len; j++) {
+      sum += elements[(i + j) % len]; // 확장하지 않고 elements길이를 나눈 나머지값을 통해 i부터 j개의 값을 누적해 더한다.
+      set.add(sum);
+    }
+  }
+  // console.log(set)
+  return set.size;
 }
