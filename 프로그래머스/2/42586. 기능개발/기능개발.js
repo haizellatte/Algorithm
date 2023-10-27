@@ -1,21 +1,25 @@
 function solution(progresses, speeds) {
   let result = [];
-  const leftDevelopDays = progresses.map((progress, i) => Math.ceil((100 - progress) / speeds[i]));
 
-  let currentProgress = leftDevelopDays[0];
-  let progressDays = 0;
-  leftDevelopDays.forEach((progress) => {
-    if (currentProgress >= progress) {
-      progressDays++;
-    } else {
-      currentProgress = progress;
-      result.push(progressDays);
-      progressDays = 1;
+  while (speeds.length > 0) {
+    // 개발
+    for (let i in speeds) {
+      if (progresses[i] < 100) {
+        progresses[i] += speeds[i];
+      }
     }
-  });
+    
+    // 배포
+    let deployDay = 0;
+    while (progresses[0] >= 100) {
+      progresses.shift();
+      speeds.shift();
+      deployDay++;
+    }
 
-  if (progressDays) {
-    result.push(progressDays);
+    if (deployDay > 0) {
+      result.push(deployDay);
+    }
   }
 
   return result;
