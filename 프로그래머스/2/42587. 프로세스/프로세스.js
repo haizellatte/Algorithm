@@ -1,26 +1,34 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/42587
+
 function solution(priorities, location) {
-  const nQueue = [...priorities];
-  const indexQueue = priorities.map((_, i) => i);
-  const outTurn = [];
+  let result = 0;
 
-  while (nQueue.length > 0) {
-    let outN = nQueue[0];
-    let maxN = Math.max(...nQueue);
+  const list = priorities.map((t, i) => ({
+    location: i === location,
+    priority: t,
+  }));
 
-    if (outN === maxN) {
-      outTurn.push(indexQueue[0]);
+  while (true) {
+    //* list의 첫번째 요소를 뽑음
+    const firstEle = list.shift();
+    //* list 안에 더 높은 우선 순위가 있는지 확인)
+    const ListhasMoreHighPriority = list.some(
+      (el) => el.priority > firstEle.priority
+    );
+
+    if (ListhasMoreHighPriority) {
+      //* list 안에 더 높은 우선순위인 숫자가 있으면(true) firstEle를 list의 맨뒤에 push
+      list.push(firstEle);
     } else {
-      nQueue.push(outN);
-      indexQueue.push(indexQueue[0]);
+      //* firstEle가 가장 높은 순위라면 result++;
+      result++;
+      //* 이때 firstEle의 location이 true라면 즉시 result를 리턴
+      if (firstEle.location) {
+        return result;
+      }
     }
-    nQueue.shift();
-    indexQueue.shift();
-
-
-    if (outTurn.at(-1) === location) {
-      break;
-    }
-  };
-
-  return outTurn.length;
+  }
 }
+
+console.log(solution([2, 1, 3, 2], 2)); // 1
+// console.log(solution([1, 1, 9, 1, 1, 1], 0)); // 5
