@@ -1,21 +1,11 @@
-const solution = (input) => {
-    const ns = input.split(' ').map((s) => +s);
-    const nm = ns.reduce((acc, n) => {
-        if (acc[n]) {
-            return { ...acc, [n]: acc[n] + 1 };
-        } else {
-            return { ...acc, [n]: 1 };
-        }
-    }, {});
+const fs = require("fs");
+const [A, B, C] = fs
+  .readFileSync("/dev/stdin")
+  .toString()
+  .split(" ")
+  .map(Number)
+  .sort((a, b) => a - b);
 
-    switch (Object.keys(nm).length) {
-        case 1:
-            return ns[0] * 1000 + 10000;
-        case 2:
-            return +Object.entries(nm).find((_n) => _n[1] === 2)[0] * 100 + 1000;
-        default:
-            return Math.max(...ns) * 100;
-    }
-};
-const print = (input) => console.log(solution(input + ''));
-process.stdin.on('data', print);
+if (A === B && B === C) console.log(10000 + A * 1000);
+else if (A === B || B === C) console.log(1000 + B * 100);
+else console.log(C * 100);
