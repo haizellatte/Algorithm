@@ -7,8 +7,11 @@ const [a, b] = fs
   .split("\n")
   .map(Number);
 
-  const number = b.toString().split("").map(Number).reverse();
+  const number = b
+    .toString()
+    .split("")
+    .reverse()
+    .map((x) => a * x);
 
-  const temp = number.map((x) => a * x);
-  temp.forEach((x) => console.log(x));
-  console.log(temp[0] + temp[1] * 10 + temp[2] * 100);
+  number.forEach((x) => console.log(x));
+  console.log(number[0] + number[1] * 10 + number[2] * 100);
